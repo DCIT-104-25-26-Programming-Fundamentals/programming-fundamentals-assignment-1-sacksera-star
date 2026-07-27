@@ -66,5 +66,83 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return None
+    return a % b
+
+
+def exponentiate(a, b):
+    return a ** b
+
+
+def print_menu():
+    print("\n============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+if __name__ == "__main__":
+    operations = {
+        "1": ("+", add),
+        "2": ("-", subtract),
+        "3": ("*", multiply),
+        "4": ("/", divide),
+        "5": ("%", modulus),
+        "6": ("**", exponentiate),
+    }
+
+    while True:
+        print_menu()
+        choice = input("Select an operation (1-7): ")
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice not in operations:
+            print("Error: Invalid choice. Please enter a number between 1 and 7.")
+            continue
+
+        symbol, operation = operations[choice]
+        num1 = float(input("Enter first number : "))
+        num2 = float(input("Enter second number: "))
+
+        if choice in ("4", "5") and num2 == 0:
+            print("Error: Cannot divide by zero.")
+            continue
+
+        result = operation(num1, num2)
+
+        # Print numbers cleanly (10 instead of 10.0) when they're whole numbers
+        def clean(x):
+            return int(x) if isinstance(x, float) and x.is_integer() else x
+
+        n1, n2, result = clean(num1), clean(num2), clean(result)
+        print(f"Result: {n1} {symbol} {n2} = {result}")
 
