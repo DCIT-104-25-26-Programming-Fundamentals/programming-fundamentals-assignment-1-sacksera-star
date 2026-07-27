@@ -78,7 +78,7 @@ if __name__ == "__main__":
             numbers.append(value)
 
         print("\nResults:")
-        print(f"Sum:     {calculate_sum(numbers)}")
+        print(f"Sum:  {calculate_sum(numbers)}")
         print(f"Average: {calculate_average(numbers)}")
         print(f"Maximum: {calculate_max(numbers)}")
         print(f"Minimum: {calculate_min(numbers)}")
